@@ -87,13 +87,8 @@ def menu_principal(productos):
         mostrar_stock(productos)
         print("Por favor seleccione el número de la opción que desee llevar.")
         resp3=int(input(""))
-<<<<<<< Updated upstream
-        if resp3>1  or resp3<8:
+        if resp3>1  or resp3<9:
             print("¡Ingrese un número valido!")
-=======
-        if resp3<1 or resp3>8:
-            print("¡ingrese un numero valido!")
->>>>>>> Stashed changes
         else:
             #cantidad de leche
             if resp3==1:
@@ -142,7 +137,7 @@ def menu_principal(productos):
             elif resp3==5:
                 print("¿Cuanto desea de agua?")
                 agua=int(input())
-                if leche>24:
+                if agua>50:
                     print("¡No hay tanto stock!")
                     resp2=1
                 else:
@@ -161,7 +156,7 @@ def menu_principal(productos):
                     #aceite
 
             elif resp3==7:
-                print("¿Cuanto desea de aciete?")
+                print("¿Cuanto desea de aceite?")
                 aceite=int(input())
                 if aceite>12:
                     print("¡No hay tanto stock!")
@@ -179,6 +174,20 @@ def menu_principal(productos):
                 else:
                     print("usted a puesto en el carro esta cantidad del producto:",bebida)
                     resp3=0
+            elif resp3==9:
+                resp2==0
+                break
+
+#PRECIOS
+    precioleche=leche*1100
+    preciopan=pan*800
+    preciofideos=paquete_fideos*2500
+    precioenergetica=enegeritca*1800
+    precioagua=agua*1000
+    preciocigarros=cigarros*3700
+    precioaceite=aceite*2250
+    preciobebida=bebida*1850
+    carro=precioleche+preciopan+preciofideos+precioenergetica+precioagua+preciocigarros+precioaceite+preciobebida
 
 # OPCION 2 REALIZAR COMPRA
     while resp2== 2:
@@ -191,6 +200,61 @@ def menu_principal(productos):
             resp5=int(input("Ingrese opción (1,2) ->"))
         if resp5 == 2:
             resp2=0
+        if resp == 1:
+            print("~~PAGAR CARRO DE COMPRAS~~")
+            print("Monto total a pagar por sus productos :",carro)
+            print("~Metodo de pago~")
+            print("1. Débito")
+            print("2. Crédito")
+            print("3. Efectivo")
+            print("4. Salir")
+            respcarro=int(input("Ingrese su opción (1,2,3,4) ->"))
+            while respcarro<1 or respcarro>4:
+                print("Ingrese opción válida")
+                respcarro=int(input("Ingrese su opción (1,2,3,4) ->"))
+            if respcarro==1:
+                print("~DÉBITO~")
+                print("Ingrese la tarjeta al lector de la máquina.")
+                time.sleep(1)
+                print("Espere un momento . . .")
+                time.sleep(1)
+                print("Ingrese la clave de 4 digitos")
+                clave=(input("->"))
+                while len(clave) != 4 or not clave.isdigit():
+                  print("La clave debe tener exactamente 4 caracteres. Inténtelo de nuevo.")
+                  clave=input("->")
+                time.sleep(1)
+                print("Aprobado, operación completada.")
+                print("Pago realizado con éxito, gracias por comprar en Don pepe.")
+                resp2=0
+            elif respcarro==2:
+                print("~CRÉDITO~")
+                print("Ingrese la tarjeta al lector de la máquina.")
+                time.sleep(1)
+                print("Espere un momento . . .")
+                time.sleep(1)
+                print("Ingrese la clave de 4 digitos")
+                clave=(input("->"))
+                while len(clave) != 4 or not clave.isdigit():
+                  print("La clave debe tener exactamente 4 caracteres. Inténtelo de nuevo.")
+                  clave=input("->")
+                time.sleep(1)
+                print("Aprobado, operación completada.")
+                print("Pago realizado con éxito, gracias por comprar en Don pepe.")
+
+                resp2=0
+            elif respcarro==3:
+                print("~EFECTIVO~")
+                print("Ingrese billetes a la máquina.")
+                time.sleep(3)
+                print("Pago realizado con éxito, gracias por comprar en Don pepe.")
+            elif respcarro==4:
+                resp2=0
+                break
+            
+                
+            
+            
         
         
 # OPCION 3 CAJERO
