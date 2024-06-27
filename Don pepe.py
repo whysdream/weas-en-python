@@ -42,25 +42,20 @@ def mostrar_stock(productos):
 
 def modificar_cantidad(productos):
     nombre_producto = input("Ingrese el nombre del producto a modificar: ")
+    encontrado = False
     for producto in productos:
         if producto[0] == nombre_producto:
             nueva_cantidad = input("Ingrese la nueva cantidad: ")
-            producto = (producto[0], producto[1], nueva_cantidad)
-            print("Cantidad modificada con éxito.")
+            producto[2] = nueva_cantidad
+            time.sleep(1)
+            encontrado=True
             break
-
-leche=0
-lechestock=24
-pan=0
-panstock=2
-paquete_fideos=0
-fideosstock=27
-enegeritca=0
-agua=0
-cigarros=0
-aceite=0
-bebida=0
-
+        if encontrado:
+                guardar_archivo(productos)
+                time.sleep(1)
+                print("producto modifcado con exito")
+        else:
+            print(f"producto '{nombre_producto}' no encontrado en el stock")
 # Funcion DEL MENU PRINCIPAL
 def menu_principal(productos):
     print("~~Menu~~")
@@ -71,13 +66,8 @@ def menu_principal(productos):
 
     resp2 = int(input("Ingrese su opción (1,2,3,4) ->"))
 
-## test
-    while resp2==5:
-        modificar_cantidad(productos)
-        guardar_archivo(productos)
-        resp2=0
 
-#test
+
     # Parche2
     while resp2 < 1 or resp2 > 4:
         print("¡Ingrese opción válida!")
@@ -87,13 +77,9 @@ def menu_principal(productos):
         mostrar_stock(productos)
         print("Por favor seleccione el número de la opción que desee llevar.")
         resp3=int(input(""))
-<<<<<<< Updated upstream
-        if resp3>1  or resp3<8:
-            print("¡Ingrese un número valido!")
-=======
+    
         if resp3<1 or resp3>8:
             print("¡ingrese un numero valido!")
->>>>>>> Stashed changes
         else:
             #cantidad de leche
             if resp3==1:
@@ -161,7 +147,7 @@ def menu_principal(productos):
                     #aceite
 
             elif resp3==7:
-                print("¿Cuanto desea de aciete?")
+                print("¿Cuanto desea de aceite?")
                 aceite=int(input())
                 if aceite>12:
                     print("¡No hay tanto stock!")
