@@ -37,6 +37,21 @@ def mostrar_stock(productos):
         print(f"{i}. [{nombre}]---Precio:[${precio}]---Cantidad:[{cantidad}]")
 
 
+<<<<<<< Updated upstream
+=======
+def modificar_cantidad(productos, nombre_producto, nueva_cantidad):
+    encontrado = False
+    for producto in productos:
+        if producto[0] == nombre_producto:
+            producto[2] = str(int(producto[2]) - nueva_cantidad)
+            encontrado = True
+            break
+    if encontrado:
+        guardar_archivo(productos)
+        print(f"{nueva_cantidad} unidades de '{nombre_producto}' compradas con éxito.")
+    else:
+        print(f"Producto '{nombre_producto}' no encontrado en el stock.")
+>>>>>>> Stashed changes
 # Funcion DEL MENU PRINCIPAL
 def menu_principal(productos):
     print("~~Menu~~")
@@ -55,6 +70,7 @@ def menu_principal(productos):
     while resp2 == 1:
         mostrar_stock(productos)
         print("Por favor seleccione el número de la opción que desee llevar.")
+<<<<<<< Updated upstream
         resp3=int(input(""))
         if resp3>1  or resp3<8:
             print("¡Ingrese un número valido!")
@@ -104,6 +120,21 @@ def menu_principal(productos):
             
 
 
+=======
+        resp3=int(input())
+    
+        producto_seleccionado = productos[resp3 - 1]
+        nombre_producto = producto_seleccionado[0]
+        precio_producto = producto_seleccionado[1]
+        stock_disponible = int(producto_seleccionado[2])
+
+        cantidad_comprar = int(input(f"Ingrese la cantidad de '{nombre_producto}' que desea comprar: "))
+
+        if cantidad_comprar > stock_disponible:
+            print(f"No hay suficiente stock disponible de '{nombre_producto}'.")
+        else:
+            modificar_cantidad(productos, nombre_producto, cantidad_comprar)
+>>>>>>> Stashed changes
 # OPCION 2 REALIZAR COMPRA
     while resp2== 2:
         print("~~REALIZAR COMPRA~~")
