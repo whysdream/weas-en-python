@@ -76,7 +76,7 @@ def menu_principal(productos):
     while resp2 == 1:
         mostrar_stock(productos)
         print("Por favor seleccione el número de la opción que desee llevar.")
-        resp3=int(input(""))
+        resp3=int(input())
     
         if resp3<1 or resp3>8:
             print("¡ingrese un numero valido!")
@@ -87,7 +87,7 @@ def menu_principal(productos):
                 leche=int(input())
                 if leche>24:
                     print("¡No hay tanto stock!")
-                    resp2=1
+                    leche=(input())
                 else:
                     print("Usted a puesto en el carro esta cantidad del producto:",leche)
                     resp3=0
@@ -98,7 +98,7 @@ def menu_principal(productos):
                 pan=int(input())
                 if pan>5:
                     print("¡No hay tanto stock!")
-                    resp2=1
+                    pan=(input())
                 else:
                     print("usted a puesto en el carro esta cantidad del producto:",pan)
                     resp3=0
@@ -110,7 +110,7 @@ def menu_principal(productos):
                 paquete_fideos=int(input())
                 if paquete_fideos>27:
                     print("¡No hay tanto stock!")
-                    resp2=1
+                    paquete_fideos=input(())
                 else:
                     print("usted a puesto en el carro esta cantidad del producto:",paquete_fideos)
                     resp3=0
@@ -120,7 +120,7 @@ def menu_principal(productos):
                 enegeritca=int(input())
                 if enegeritca>42:
                     print("¡No hay tanto stock!")
-                    resp2=1
+                    enegeritca=input(())
                 else:
                     print("usted a puesto en el carro esta cantidad del producto:",enegeritca)
                     resp3=0
@@ -128,9 +128,9 @@ def menu_principal(productos):
             elif resp3==5:
                 print("¿Cuanto desea de agua?")
                 agua=int(input())
-                if leche>24:
+                if agua>24:
                     print("¡No hay tanto stock!")
-                    resp2=1
+                    agua=input(())
                 else:
                     print("usted a puesto en el carro esta cantidad del producto:",agua)
                     resp3=0
@@ -140,7 +140,7 @@ def menu_principal(productos):
                 cigarros=int(input())
                 if cigarros>32:
                     print("¡No hay tanto stock!")
-                    resp2=1
+                    cigarros=input(())
                 else:
                     print("usted a puesto en el carro esta cantidad del producto:",cigarros)
                     resp3=0
@@ -151,7 +151,7 @@ def menu_principal(productos):
                 aceite=int(input())
                 if aceite>12:
                     print("¡No hay tanto stock!")
-                    resp2=1
+                    aceite=input(())
                 else:
                     print("usted a puesto en el carro esta cantidad del producto:",aceite)
                     resp3=0
@@ -161,7 +161,7 @@ def menu_principal(productos):
                 bebida=int(input())
                 if bebida>20:
                     print("¡No hay tanto stock!")
-                    resp2=1
+                    bebida=input(())
                 else:
                     print("usted a puesto en el carro esta cantidad del producto:",bebida)
                     resp3=0
