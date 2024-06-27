@@ -9,6 +9,7 @@ stock = "stockk.csv"
 
 
 # Funcion PARA CARGAR LOS DATOS
+# Funcion PARA CARGAR LOS DATOS
 def cargar_archivo():
     productos = []
     with open(stock, "r", newline="") as archivo:
@@ -17,7 +18,7 @@ def cargar_archivo():
             nombre = fila[0]
             precio = fila[1]
             cantidad = fila[2]
-            productos.append([nombre,precio,cantidad])  # es una tupla por eso el doble parentesis
+            productos.append([nombre,precio,cantidad]) 
     return productos
 
 
