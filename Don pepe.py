@@ -4,6 +4,7 @@ from Login import *
 verificar, agregar = BaseDatos()
 import csv
 import time
+import random
 stock = "stockk.csv"
 
 
@@ -55,9 +56,10 @@ def menu_principal(productos):
 
     while resp2 == 1:
         mostrar_stock(productos)
+        print("Por favor seleccione el número de la opción que desee llevar.")
         resp3=int(input(""))
-        if resp3>1 and resp3<8:
-            print("¡ingrese un numero valido!")
+        if resp3>1  or resp3<8:
+            print("¡Ingrese un número valido!")
         else:
             resp2=0
             #cantidad de leche
@@ -68,7 +70,7 @@ def menu_principal(productos):
                     print("¡No hay tanto stock!")
                     resp2=1
                 else:
-                    print("usted a puesto en el carro esta cantidad del producto:",leche)
+                    print("Usted a puesto en el carro esta cantidad del producto:",leche)
                     resp3=0
             #Cantidad leche   
         
@@ -77,6 +79,231 @@ def menu_principal(productos):
 
 
 # OPCION 2 REALIZAR COMPRA
+    while resp2== 2:
+        print("~~REALIZAR COMPRA~~")
+        print("1. Pagar carro de compras.")
+        print("2. Salir")
+        resp5=int(input("Ingrese opción (1,2) ->"))
+        while resp5<1 or resp5>2:
+            print("¡Ingrese opción válida!")
+            resp5=int(input("Ingrese opción (1,2) ->"))
+        if resp5 == 2:
+            resp2=0
+        
+        
+# OPCION 3 CAJERO
+    while resp2 == 3:
+       print("~~CAJA VECINA~~")
+       print("1. Depositar")
+       print("2. Girar dinero")
+       print("3. Salir")
+       cajvc=int(input("Ingrese la opción (1,2,3) ->"))
+       while cajvc<1 or cajvc>3:
+           print("¡Ingrese opción válida!")
+           #PARCHE
+           cajvc=int(input("Ingrese la opción (1,2,3) ->"))
+#OPCION1CAJERO
+       if cajvc ==1:
+           print("~DEPOSITAR~")
+           print("Ingrese la tarjeta al lector de la máquina.")
+           time.sleep(1)
+           print("Espere un momento . . .")
+           time.sleep(1)
+           print("Ingrese la clave de 4 digitos")
+           clave=(input("->"))
+           while len(clave) != 4 or not clave.isdigit():
+             print("La clave debe tener exactamente 4 caracteres. Inténtelo de nuevo.")
+             clave=input("->")
+           time.sleep(1)
+           print("Aprobado, se continuará con la operación.")
+           print("Ingrese el rut de la persona la cual le desea depositar (Sin puntos ni guión) (*DEBE TENER 8 CARACTERES*)")
+           rut=(input("->"))
+           while len(rut) != 8 or not rut.isdigit():
+             print("El RUT debe tener exactamente 8 caracteres. Inténtelo de nuevo.")
+             rut = input("-> ")
+           print("MONTO")
+           print("1. $5000")
+           print("2. $10000")
+           print("3. $20000")
+           print("4. $50000")
+           print("5. $100000")
+           print("6. Monto personalizado")
+           respmont=int(input("Ingrese su opción (1,2,3,4,5,6) ->"))
+           #PARCHE 
+           while respmont<1 or respmont>6:
+               print("Ingrese opción válida.")
+               respmont=int(input("Ingrese su opción (1,2,3,4,5,6) ->"))
+           if respmont == 1:
+               print("Depositando $5000 al rut ",rut)
+               print("Favor, espere un momento . . .")
+               time.sleep(2)
+               print("¡Deposito completado!")
+               print("Número de operación ",random.randint(10000,20000))
+           if respmont == 2:
+               print("Depositando $10000 al rut ",rut)
+               print("Favor, espere un momento . . .")
+               time.sleep(2)
+               print("¡Deposito completado!")
+               print("Número de operación ",random.randint(10000,20000))
+           if respmont == 3:
+               print("Depositando $20000 al rut ",rut)
+               print("Favor, espere un momento . . .")
+               time.sleep(2)
+               print("¡Deposito completado!")
+               print("Número de operación ",random.randint(10000,20000))
+           if respmont == 4:
+               print("Depositando $50000 al rut ",rut)
+               print("Favor, espere un momento . . .")
+               time.sleep(2)
+               print("¡Deposito completado!")
+               print("Número de operación ",random.randint(10000,20000))
+           if respmont == 5:
+               print("Depositando $100000 al rut ",rut)
+               print("Favor, espere un momento . . .")
+               time.sleep(2)
+               print("¡Deposito completado!")
+               print("Número de operación ",random.randint(10000,20000))
+           if respmont == 6:
+               montoper=int(input("Favor ingrese el monto a depositar ->"))
+               while montoper<3000 or montoper>200000:
+                   print("No se aceptan depositos de menos de $3000 o más de $200000, favor intentelo denuevo con un monto válido")
+                   montoper=int(input("Favor ingrese el monto a depositar ->"))
+               print("¿Está seguro de que este es el monto que desea operar? :",montoper)
+               ree=input("(S/N) ->").lower()
+               while ree!="s" and ree!="n":
+                   ree=input("Ingrese opción válida (S/N) ->").lower
+               while ree == "n":
+                 montoper=int(input("Favor ingrese el monto a depositar ->"))
+                 print("Depositando $",montoper, "al rut:",rut)
+                 print("Favor, espere un momento . . .")
+                 time.sleep(2)
+                 print("¡Deposito completado!")
+                 print("Número de operación ",random.randint(10000,20000))
+                 break;
+               if ree == "s":
+                   print("Depositando $", montoper ,"al rut :",rut)
+                   print("Favor, espere un momento . . .")
+                   time.sleep(2)
+                   print("¡Deposito completado!")
+                   print("Número de operación ",random.randint(10000,20000))
+#OPCION2CAJERO
+       if cajvc == 2:
+           print("~~GIRAR DINERO~~")
+           print("Ingrese la tarjeta al lector de la maquina.")
+           time.sleep(1)
+           print("Espere un momento . . .")
+           time.sleep(1)
+           print("Ingrese la clave de 4 digitos")
+           clave=(input("->"))
+           while len(clave) !=4:
+             print("La clave debe tener exactamente 4 caracteres. Inténtelo de nuevo.")
+             clave=(input("->"))
+           time.sleep(1)
+           print("Aprobado, se continuará con la operación.")
+           print("~MONTOS~")
+           print("1. $5000")
+           print("2. $10000")
+           print("3. $20000")
+           print("4. $50000")
+           print("5. $100000")
+           print("6. Monto personalizado")
+           girar=int(input("Ingrese su opción (1,2,3,4,5,6) ->"))
+           #PARCHE
+           while girar<1 or girar>6:
+             print("Ingrese opción válida.")
+             girar=int(input("Ingrese su opción (1,2,3,4,5,6) ->"))
+           if girar == 1:
+               print("Girando $5000, Favor espere un momento...")
+               time.sleep(2)
+               print("Retire los billetes por favor.")
+               print("Monto realizado, ¿Desea realizar otro giro?")
+               rd=input("(S/N) ->").lower()
+               if rd == "n":
+                   resp2==2
+               elif rd == "s":
+                   cajvc==2
+               while rd!="s" and rd!="n":
+                   rd=input("Ingrese opción válida (S/N) ->").lower()
+           if girar == 2:
+               print("Girando $10000, Favor espere un momento...")
+               time.sleep(2)
+               print("Retire los billetes por favor.")
+               print("Monto realizado, ¿Desea realizar otro giro?")
+               rd=input("(S/N) ->").lower()
+               if rd == "n":
+                   resp2==2
+               elif rd == "s":
+                   cajvc==2
+               while rd!="s" and rd!="n":
+                   rd=input("Ingrese opción válida (S/N) ->").lower()
+           if girar == 3:
+               print("Girando $20000, Favor espere un momento...")
+               time.sleep(2)
+               print("Retire los billetes por favor.")
+               print("Monto realizado, ¿Desea realizar otro giro?")
+               rd=input("(S/N) ->").lower()
+               if rd == "n":
+                   resp2==2
+               elif rd == "s":
+                   cajvc==2
+               while rd!="s" and rd!="n":
+                   rd=input("Ingrese opción válida (S/N) ->").lower()
+           if girar == 4:
+               print("Girando $50000, Favor espere un momento...")
+               time.sleep(2)
+               print("Retire los billetes por favor.")
+               print("Monto realizado, ¿Desea realizar otro giro?")
+               rd=input("(S/N) ->").lower()
+               if rd == "n":
+                   resp2==2
+               elif rd == "s":
+                   cajvc==2
+               while rd!="s" and rd!="n":
+                   rd=input("Ingrese opción válida (S/N) ->").lower()
+           if girar == 5:
+               print("Girando $100000, Favor espere un momento...")
+               time.sleep(2)
+               print("Retire los billetes por favor.")
+               print("Monto realizado, ¿Desea realizar otro giro?")
+               rd=input("(S/N) ->").lower()
+               if rd == "n":
+                   resp2==2
+               elif rd == "s":
+                   cajvc==2
+               while rd!="s" and rd!="n":
+                   rd=input("Ingrese opción válida (S/N) ->").lower()
+           if girar == 6:
+               montto=int(input("Favor ingrese el monto a girar ->"))
+               while montto<5000 or montto>200000:
+                   print("No se aceptan giros de menos de $5000 o más de $200000, favor intentelo denuevo con un monto válido")
+                   montto=int(input("Favor ingrese el monto a girar ->"))
+               print("¿Está seguro de que este es el monto que desea operar? :",montto)
+               rd=input("(S/N) ->").lower()
+               while rd!="s" and rd!="n":
+                   rd=input("Ingrese opción válida (S/N) ->").lower()
+               while rd == "n":
+                 montto=int(input("Favor ingrese el monto a girar ->"))
+                 print("Girando $", montto)
+                 print("Favor, espere un momento . . .")
+                 time.sleep(2)
+                 print("¡Giro completado!")
+                 break
+               if rd == "s":
+                   print("Girando $", montto)
+                   print("Favor, espere un momento . . .")
+                   time.sleep(2)
+                   print("¡Giro completado!")
+#OPCION3SALIR
+       if cajvc==3:
+           resp2=0
+
+                   
+
+                   
+                   
+
+
+        
 
 # ----------------------------INICIO PRIMER MENU-------------------->TERMINADO
 abrir = 1
@@ -123,3 +350,5 @@ while abrir == 1:
         print("Hasta luego...")
         abrir = 0
 # ----------------------------FIN PRIMER MENU---------------------------
+
+
