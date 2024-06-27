@@ -9,7 +9,6 @@ stock = "stockk.csv"
 
 
 # Funcion PARA CARGAR LOS DATOS
-# Funcion PARA CARGAR LOS DATOS
 def cargar_archivo():
     productos = []
     with open(stock, "r", newline="") as archivo:
@@ -18,7 +17,7 @@ def cargar_archivo():
             nombre = fila[0]
             precio = fila[1]
             cantidad = fila[2]
-            productos.append([nombre,precio,cantidad]) 
+            productos.append([nombre,precio,cantidad])  # es una tupla por eso el doble parentesis
     return productos
 
 
@@ -32,14 +31,15 @@ def guardar_archivo(productos):
 
 # funcion para mostrar el stock
 def mostrar_stock(productos):
-    print("=============================|Stock|=================================")
+    print("=" * 80)
+    print("|{:<3}|{:<33}|{:<5}|{:<3}|".format("ID", "Producto", "Precio", "Cantidad"))
+    print("=" * 80)
     for i, producto in enumerate(productos, start=1):
         nombre, precio, cantidad = producto
-        print(f"{i}. [{nombre}]---Precio:[${precio}]---Cantidad:[{cantidad}]")
+        print("|{:<2}|{:<35}|{:<5}|{:<3}|".format(i, nombre, f"${precio}", cantidad))
+    print("=" * 80)
 
 
-<<<<<<< Updated upstream
-=======
 def modificar_cantidad(productos, nombre_producto, nueva_cantidad):
     encontrado = False
     for producto in productos:
@@ -52,7 +52,6 @@ def modificar_cantidad(productos, nombre_producto, nueva_cantidad):
         print(f"{nueva_cantidad} unidades de '{nombre_producto}' compradas con éxito.")
     else:
         print(f"Producto '{nombre_producto}' no encontrado en el stock.")
->>>>>>> Stashed changes
 # Funcion DEL MENU PRINCIPAL
 def menu_principal(productos):
     print("~~Menu~~")
@@ -63,6 +62,8 @@ def menu_principal(productos):
 
     resp2 = int(input("Ingrese su opción (1,2,3,4) ->"))
 
+
+
     # Parche2
     while resp2 < 1 or resp2 > 4:
         print("¡Ingrese opción válida!")
@@ -70,72 +71,25 @@ def menu_principal(productos):
 
     while resp2 == 1:
         mostrar_stock(productos)
+        print("9-Salir")
         print("Por favor seleccione el número de la opción que desee llevar.")
-<<<<<<< Updated upstream
-        resp3=int(input(""))
-        if resp3>1  or resp3<8:
-            print("¡Ingrese un número valido!")
-        else:
-            resp2=0
-            #cantidad de leche
-            if resp3==1:
-                print("¿Cuanto desea de leche?")
-                leche=int(input())
-                if leche>24:
-                    print("¡No hay tanto stock!")
-                    resp2=1
-                else:
-                    print("Usted a puesto en el carro esta cantidad del producto:",leche)
-                    resp3=0
-            #cantidad de pan
-            if resp3==2:
-                print("¿Cuanto desea de pan?")
-                pan=int(input())
-                if pan>5:
-                    print("¡No hay tanto stock!")
-                    resp2=1
-                else:
-                    print("Usted a puesto en el carro esta cantidad del producto:",pan)
-                    resp3=0
-
-            if resp3==3:
-                print("¿Cuanto desea de paquete de fideos?")
-                fideos=int(input())
-                if fideos>27:
-                    print("¡No hay tanto stock!")
-                    resp2=1
-                else:
-                    print("Usted a puesto en el carro esta cantidad del producto:",fideos)
-                    resp3=0
-
-            if resp3==4:
-                print("¿Cuanto desea de energetica?")
-                energetica=int(input())
-                if energetica>42:
-                    print("¡No hay tanto stock!")
-                    resp2=1
-                else:
-                    print("Usted a puesto en el carro esta cantidad del producto:",pan)
-                    resp3=0
-
-            
-
-
-=======
         resp3=int(input())
-    
-        producto_seleccionado = productos[resp3 - 1]
-        nombre_producto = producto_seleccionado[0]
-        precio_producto = producto_seleccionado[1]
-        stock_disponible = int(producto_seleccionado[2])
-
-        cantidad_comprar = int(input(f"Ingrese la cantidad de '{nombre_producto}' que desea comprar: "))
-
-        if cantidad_comprar > stock_disponible:
-            print(f"No hay suficiente stock disponible de '{nombre_producto}'.")
+        if resp3==9:
+            resp2=0
         else:
-            modificar_cantidad(productos, nombre_producto, cantidad_comprar)
->>>>>>> Stashed changes
+    
+            producto_seleccionado = productos[resp3 - 1]
+            nombre_producto = producto_seleccionado[0]
+            precio_producto = producto_seleccionado[1]
+            stock_disponible = int(producto_seleccionado[2])
+
+            cantidad_comprar = int(input(f"Ingrese la cantidad de '{nombre_producto}' que desea comprar: "))
+
+            if cantidad_comprar > stock_disponible:
+                print(f"No hay suficiente stock disponible de '{nombre_producto}'.")
+            else:
+                modificar_cantidad(productos, nombre_producto, cantidad_comprar)
+
 # OPCION 2 REALIZAR COMPRA
     while resp2== 2:
         print("~~REALIZAR COMPRA~~")
@@ -147,6 +101,61 @@ def menu_principal(productos):
             resp5=int(input("Ingrese opción (1,2) ->"))
         if resp5 == 2:
             resp2=0
+        if resp5 == 1:
+            print("~~PAGAR CARRO DE COMPRAS~~")
+            print("Monto total a pagar por sus productos :",random.randint(2000,20000))
+            print("~Metodo de pago~")
+            print("1. Débito")
+            print("2. Crédito")
+            print("3. Efectivo")
+            print("4. Salir")
+            respcarro=int(input("Ingrese su opción (1,2,3,4) ->"))
+            while respcarro<1 or respcarro>4:
+                print("Ingrese opción válida")
+                respcarro=int(input("Ingrese su opción (1,2,3,4) ->"))
+            if respcarro==1:
+                print("~DÉBITO~")
+                print("Ingrese la tarjeta al lector de la máquina.")
+                time.sleep(1)
+                print("Espere un momento . . .")
+                time.sleep(1)
+                print("Ingrese la clave de 4 digitos")
+                clave=(input("->"))
+                while len(clave) != 4 or not clave.isdigit():
+                  print("La clave debe tener exactamente 4 caracteres. Inténtelo de nuevo.")
+                  clave=input("->")
+                time.sleep(1)
+                print("Aprobado, operación completada.")
+                print("Pago realizado con éxito, gracias por comprar en Don pepe.")
+                resp2=0
+            elif respcarro==2:
+                print("~CRÉDITO~")
+                print("Ingrese la tarjeta al lector de la máquina.")
+                time.sleep(1)
+                print("Espere un momento . . .")
+                time.sleep(1)
+                print("Ingrese la clave de 4 digitos")
+                clave=(input("->"))
+                while len(clave) != 4 or not clave.isdigit():
+                  print("La clave debe tener exactamente 4 caracteres. Inténtelo de nuevo.")
+                  clave=input("->")
+                time.sleep(1)
+                print("Aprobado, operación completada.")
+                print("Pago realizado con éxito, gracias por comprar en Don pepe.")
+
+                resp2=0
+            elif respcarro==3:
+                print("~EFECTIVO~")
+                print("Ingrese billetes a la máquina.")
+                time.sleep(3)
+                print("Pago realizado con éxito, gracias por comprar en Don pepe.")
+            elif respcarro==4:
+                resp2=0
+                break
+            
+                
+            
+            
         
         
 # OPCION 3 CAJERO
@@ -156,7 +165,6 @@ def menu_principal(productos):
        print("2. Girar dinero")
        print("3. Salir")
        cajvc=int(input("Ingrese la opción (1,2,3) ->"))
-
        while cajvc<1 or cajvc>3:
            print("¡Ingrese opción válida!")
            #PARCHE
@@ -170,7 +178,6 @@ def menu_principal(productos):
            time.sleep(1)
            print("Ingrese la clave de 4 digitos")
            clave=(input("->"))
-           
            while len(clave) != 4 or not clave.isdigit():
              print("La clave debe tener exactamente 4 caracteres. Inténtelo de nuevo.")
              clave=input("->")
@@ -368,7 +375,7 @@ def menu_principal(productos):
 # ----------------------------INICIO PRIMER MENU-------------------->TERMINADO
 abrir = 1
 acces = 0
-
+productos = cargar_archivo()
 intentos = 3
 while abrir == 1:
     print("===Don Pepe===")
